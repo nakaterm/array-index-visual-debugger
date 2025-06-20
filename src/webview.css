@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for VS Code webview */
+body {
+  font-family: 'Segoe WPC', 'Segoe UI', sans-serif;
+  background-color: #1e1e1e;
+  color: #cccccc;
+  margin: 0;
+  padding: 0;
+}
+
+@layer components {
+  .array-cell {
+    @apply border border-gray-600 rounded bg-transparent text-gray-300;
+    @apply min-w-16 min-h-12 flex items-center justify-center;
+    @apply box-border;
+  }
+
+  .pointer-highlight {
+    @apply border-4 rounded-md bg-transparent box-border;
+  }
+
+  .vscode-button {
+    @apply px-3 py-1 rounded border border-gray-500 cursor-pointer;
+    @apply bg-transparent text-gray-300 transition-colors duration-200;
+  }
+
+  .vscode-button:hover {
+    @apply bg-blue-600;
+  }
+
+  .vscode-button.active {
+    @apply bg-blue-600 text-white;
+  }
+
+  .vscode-input {
+    @apply px-2 py-1 border border-gray-500 rounded;
+    @apply bg-transparent text-gray-300;
+  }
+}

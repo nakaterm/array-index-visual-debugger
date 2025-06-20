@@ -1,0 +1,92 @@
+{
+  "name": "array-index-visual-debugger",
+  "displayName": "Array Index Visual Debugger",
+  "description": "visually debug arrays alongside the variables that point to their indices.",
+  "version": "0.0.1",
+  "preview": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nakaterm/array-index-visual-debugger.git"
+  },
+  "publisher": "nakaterm",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "license": "MIT",
+  "categories": [
+    "Debuggers",
+    "Education",
+    "Visualization"
+  ],
+  "keywords": [
+    "debug",
+    "algorithm",
+    "visualization",
+    "python",
+    "array",
+    "index"
+  ],
+  "icon": "assets/icon.png",
+  "activationEvents": [
+    "onDebug"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "array-index-visual-debugger.openPanel",
+        "title": "Array Index Visual Debugger: Open Panel"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js && npm run build:webview",
+    "watch": "npm-run-all -p watch:esbuild watch:webview watch:tsc watch:css",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:webview": "npm run build:css && node esbuild.webview.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "watch:css": "npx tailwindcss -i ./src/webview.css -o ./dist/webview.css --watch",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "build:webview": "npm run build:css && node esbuild.webview.js",
+    "build:css": "npx tailwindcss -i ./src/webview.css -o ./dist/webview.css --minify",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "@types/vscode": "^1.100.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.4",
+    "esbuild-plugin-svgr": "^3.1.1",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.6",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
