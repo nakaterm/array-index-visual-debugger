@@ -2,7 +2,7 @@
   "name": "array-index-visual-debugger",
   "displayName": "Array Index Visual Debugger",
   "description": "visually debug arrays alongside the variables that point to their indices.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "preview": true,
   "repository": {
     "type": "git",
