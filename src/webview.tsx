@@ -12,7 +12,6 @@ import { TopRightControls } from './components/TopRightControls';
 
 const vscode = window.acquireVsCodeApi();
 
-// 新しいアプリコンポーネント
 const VisualizerApp: React.FC = () => {
   const [props, setProps] = React.useState<ArrayVisualizerProps>({
     arrayName: '',
@@ -147,11 +146,9 @@ const VisualizerApp: React.FC = () => {
 
   return (
     <div className="flex h-screen">
-      {/* 左側の操作パネル */}
       <div
         className={`${isPanelCollapsed ? 'w-10' : 'w-80'} transition-all duration-300 border-r border-gray-600 bg-gray-800 flex flex-col`}
       >
-        {/* トグルボタン */}
         <div className="flex justify-between items-center ml-2 border-b border-gray-600">
           {!isPanelCollapsed && (
             <span className="text-gray-400 font-medium text-sm">[controls]</span>
@@ -165,7 +162,6 @@ const VisualizerApp: React.FC = () => {
           </button>
         </div>
 
-        {/* パネルコンテンツ */}
         {!isPanelCollapsed && (
           <div className="p-4 overflow-y-auto">
             <div className="space-y-4">
@@ -198,9 +194,7 @@ const VisualizerApp: React.FC = () => {
         )}
       </div>
 
-      {/* 右側の視覚化エリア */}
       <div className="flex-1 overflow-hidden flex flex-col relative">
-        {/* 左上の配列情報エリア */}
         {props.arrayName && (
           <div className="absolute top-4 left-4 z-10">
             <h2 className="text-sm font-semibold text-white">{props.arrayName}</h2>
@@ -212,7 +206,6 @@ const VisualizerApp: React.FC = () => {
           </div>
         )}
 
-        {/* 右上のコントロールエリア */}
         <div className="flex justify-end p-4 pb-0">
           {props.arrayName && (
             <TopRightControls
@@ -226,7 +219,6 @@ const VisualizerApp: React.FC = () => {
           )}
         </div>
 
-        {/* 描画エリア */}
         <div className="flex-1 overflow-auto p-6">
           <div className="min-h-full flex items-center justify-center">
             {props.arrayName ? (
@@ -252,7 +244,6 @@ const VisualizerApp: React.FC = () => {
   );
 };
 
-// 初回のみマウント
 const root = document.getElementById('root');
 if (root) {
   createRoot(root).render(<VisualizerApp />);

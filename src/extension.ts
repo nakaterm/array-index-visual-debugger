@@ -18,7 +18,6 @@ type PointerData = {
   value: number;
 };
 
-// State Management
 class StateManager {
   private blocks: Map<string, ArrayBlock> = new Map();
   private currentArrayName: string = '';
@@ -95,7 +94,6 @@ class StateManager {
   }
 }
 
-// Debug Service
 class DebugService {
   private variablesCache: Map<number, DebugVariable[]> = new Map();
 
@@ -235,13 +233,13 @@ class DebugService {
   ): Promise<number | undefined> {
     try {
       const { frameId } = await this.getDebugContext(session);
-      
+
       const evalResp = await session.customRequest('evaluate', {
         expression: expression.trim(),
         frameId,
-        context: 'watch'
+        context: 'watch',
       });
-      
+
       if (evalResp && evalResp.result !== undefined) {
         const value = Number(evalResp.result);
         return Number.isInteger(value) ? value : undefined;
@@ -258,13 +256,13 @@ class DebugService {
   ): Promise<{ isValid: boolean; error?: string }> {
     try {
       const { frameId } = await this.getDebugContext(session);
-      
+
       const evalResp = await session.customRequest('evaluate', {
         expression: expression.trim(),
         frameId,
-        context: 'watch'
+        context: 'watch',
       });
-      
+
       if (evalResp && evalResp.result !== undefined) {
         const value = Number(evalResp.result);
         if (Number.isInteger(value)) {
@@ -297,10 +295,10 @@ class DebugService {
       if (seenPointers.has(pointerInfo.name)) {
         continue;
       }
-      
+
       // Try to evaluate the expression directly
       const value = await this.evaluateExpression(session, pointerInfo.name);
-      
+
       if (value !== undefined) {
         pointers.push({
           name: pointerInfo.name,
@@ -310,12 +308,11 @@ class DebugService {
         seenPointers.add(pointerInfo.name);
       }
     }
-    
+
     return pointers;
   }
 }
 
-// Polling Service
 class PollingService {
   private pollingIntervals: { [varName: string]: NodeJS.Timeout } = {};
   private readonly POLLING_INTERVAL = 1000;
@@ -365,7 +362,6 @@ class PollingService {
   }
 }
 
-// Webview Manager
 class WebviewManager {
   private context: vscode.ExtensionContext;
   private pointerColorMap: { [name: string]: string } = {};
@@ -433,8 +429,8 @@ class WebviewManager {
     is2D: boolean
   ): void {
     // Clean up colors for deleted pointers
-    const currentPointerNames = new Set(pointers.map(p => p.name));
-    Object.keys(this.pointerColorMap).forEach(name => {
+    const currentPointerNames = new Set(pointers.map((p) => p.name));
+    Object.keys(this.pointerColorMap).forEach((name) => {
       if (!currentPointerNames.has(name)) {
         delete this.pointerColorMap[name];
       }
@@ -463,7 +459,6 @@ class WebviewManager {
   }
 }
 
-// Message Handlers
 class MessageHandlers {
   constructor(
     private stateManager: StateManager,
@@ -570,7 +565,7 @@ class MessageHandlers {
         type: 'validationResult',
         expression: msg.expression,
         isValid: false,
-        error: 'No active debug session'
+        error: 'No active debug session',
       });
       return;
     }
@@ -580,7 +575,7 @@ class MessageHandlers {
       type: 'validationResult',
       expression: msg.expression,
       isValid: validation.isValid,
-      error: validation.error
+      error: validation.error,
     });
   }
 
@@ -628,7 +623,9 @@ class MessageHandlers {
           this.updateWebview(session, newArrayName, panel, block)
         );
       } else {
-        vscode.window.showErrorMessage(`Array variable "${newArrayName}" not found or not an array.`);
+        vscode.window.showErrorMessage(
+          `Array variable "${newArrayName}" not found or not an array.`
+        );
       }
     } catch {
       vscode.window.showErrorMessage(`Failed to check variable "${newArrayName}".`);
@@ -749,7 +746,6 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  // Debug session termination handler
   vscode.debug.onDidTerminateDebugSession(() => {
     panel?.dispose();
     cleanupState();

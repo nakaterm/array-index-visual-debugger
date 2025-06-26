@@ -28,12 +28,12 @@ export const ArrayVisualizer: React.FC<
             transform: `scale(${zoomLevel})`,
             transformOrigin: 'top left',
             transition: 'transform 0.2s ease-in-out',
-            width: props.is2D 
+            width: props.is2D
               ? `${120 + 40 + (Array.isArray(props.arrayValue) && Array.isArray(props.arrayValue[0]) ? props.arrayValue[0].length : 0) * 64 + 64}px`
               : `${Array.isArray(props.arrayValue) ? props.arrayValue.length * 4 : 0}em`,
             height: props.is2D
               ? `${80 + 30 + (Array.isArray(props.arrayValue) ? props.arrayValue.length : 0) * 64 + 64}px`
-              : `${props.pointers.filter(p => p.type === 'index').length * 60 + 200}px`,
+              : `${props.pointers.filter((p) => p.type === 'index').length * 60 + 200}px`,
           }}
         >
           {props.is2D ? (
