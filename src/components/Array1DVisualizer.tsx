@@ -280,7 +280,7 @@ export const Array1DVisualizer: React.FC<ArrayVisualizerProps> = ({
                             top: '100%',
                             width: 0,
                             height: 0,
-                            borderLeft: '4px solid transparent', 
+                            borderLeft: '4px solid transparent',
                             borderRight: '4px solid transparent',
                             borderTop: `4px solid ${pointerColorMap[pointer.name]}`,
                           }}

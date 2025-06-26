@@ -1,7 +1,13 @@
 // @jsxImportSource react
 import React from 'react';
 import { ArrayVisualizerProps, CellHighlight } from '../types';
-import { GRID_HEADER_WIDTH, GRID_HEADER_HEIGHT, GRID_MIN_CELL_WIDTH, ROW_NUMBER_WIDTH, COL_NUMBER_HEIGHT } from '../constants';
+import {
+  GRID_HEADER_WIDTH,
+  GRID_HEADER_HEIGHT,
+  GRID_MIN_CELL_WIDTH,
+  ROW_NUMBER_WIDTH,
+  COL_NUMBER_HEIGHT,
+} from '../constants';
 
 // 2次元配列表示用のコンポーネント
 export const Array2DVisualizer: React.FC<
@@ -58,7 +64,7 @@ export const Array2DVisualizer: React.FC<
             {/* グリッド構造を完全に再現するためのプレースホルダー */}
             {/* 左上の空のコーナーセル */}
             <div className="w-32 h-20"></div>
-            
+
             {/* 行番号ヘッダー用の空セル */}
             <div className="w-10 h-20"></div>
 
@@ -79,7 +85,7 @@ export const Array2DVisualizer: React.FC<
               <React.Fragment key={`row-overlay-${rowIdx}`}>
                 {/* 行ヘッダー部分 */}
                 <div className="min-w-32 min-h-12"></div>
-                
+
                 {/* 行番号部分 */}
                 <div className="min-w-10 min-h-12"></div>
 
@@ -140,7 +146,7 @@ export const Array2DVisualizer: React.FC<
         >
           {/* 左上の空のコーナーセル */}
           <div className="w-32 h-20"></div>
-          
+
           {/* 行番号ヘッダー用の空セル */}
           <div className="w-10 h-20"></div>
 
@@ -204,7 +210,7 @@ export const Array2DVisualizer: React.FC<
               </div>
 
               {/* 行番号 */}
-              <div 
+              <div
                 className="w-full h-full min-w-10 flex items-center justify-center text-xs text-gray-200 bg-gray-600 font-sans"
                 style={{
                   borderRadius: '0',

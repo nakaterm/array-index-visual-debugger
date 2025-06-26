@@ -96,4 +96,8 @@ export interface ValidateExpressionMessage {
   expression: string;
 }
 
-export type ExtensionMessage = AddPointerMessage | DeletePointerMessage | SetArrayNameMessage | ValidateExpressionMessage;
+export type ExtensionMessage =
+  | AddPointerMessage
+  | DeletePointerMessage
+  | SetArrayNameMessage
+  | ValidateExpressionMessage;

@@ -30,10 +30,7 @@ export const TopRightControls: React.FC<TopRightControlsProps> = ({
 
       {/* Display Mode */}
       <div className="bg-gray-800 bg-opacity-80 rounded-lg p-2 border border-gray-600">
-        <VisualizationModeToggle 
-          mode={visualizationMode} 
-          onModeChange={onModeChange}
-        />
+        <VisualizationModeToggle mode={visualizationMode} onModeChange={onModeChange} />
       </div>
 
       {/* Index Mode */}

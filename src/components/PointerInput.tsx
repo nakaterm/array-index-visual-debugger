@@ -40,9 +40,7 @@ export function PointerInput({ is2D, vscode }: PointerInputProps) {
               type="button"
               onClick={() => setPointerType('row')}
               className={`vscode-button text-sm ${
-                pointerType === 'row' 
-                  ? 'active bg-blue-600 text-white' 
-                  : 'text-gray-300'
+                pointerType === 'row' ? 'active bg-blue-600 text-white' : 'text-gray-300'
               }`}
             >
               Row Pointer
@@ -51,9 +49,7 @@ export function PointerInput({ is2D, vscode }: PointerInputProps) {
               type="button"
               onClick={() => setPointerType('col')}
               className={`vscode-button text-sm ${
-                pointerType === 'col' 
-                  ? 'active bg-blue-600 text-white' 
-                  : 'text-gray-300'
+                pointerType === 'col' ? 'active bg-blue-600 text-white' : 'text-gray-300'
               }`}
             >
               Column Pointer
